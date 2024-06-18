@@ -80,6 +80,8 @@ def prev():
         if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
+        else:
+            img1 = img
         img = img_resize(img1)
         pic = ImageTk.PhotoImage(img)
         label2.config(image=pic)
@@ -90,6 +92,8 @@ def prev():
         if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
+        else:
+            img1 = img
         img = img_resize(img1)
         pic = ImageTk.PhotoImage(img)
         label2.config(image=pic)
@@ -108,6 +112,8 @@ def next():
         if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
+        else:
+            img1 = img
         img = img_resize(img1)
         pic = ImageTk.PhotoImage(img)
         label2.config(image=pic)
@@ -118,6 +124,8 @@ def next():
         if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
+        else:
+            img1 = img
         img = img_resize(img1)
         pic = ImageTk.PhotoImage(img)
         label2.config(image=pic)
