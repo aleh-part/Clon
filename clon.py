@@ -17,7 +17,7 @@ def imageUploader():
     path = tk.filedialog.askopenfilename(filetypes=fileTypes)
     if len(path):
         img = Image.open(path)
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1_0 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2_0 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
         else:
@@ -42,9 +42,11 @@ def clone_imageUploader():
             else:
                 del files[i]
         img = Image.open(path_dir+'/'+files[0])
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
+        else:
+            img1 =img
         img = img_resize(img1)
         pic = ImageTk.PhotoImage(img)
         label2.config(image=pic)
@@ -75,7 +77,7 @@ def prev():
     if count == 0:
         count = len(files)-1
         img = Image.open(path_dir + '/' + files[count])
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
         img = img_resize(img1)
@@ -85,7 +87,7 @@ def prev():
     else:
         count -= 1
         img = Image.open(path_dir + '/' + files[count])
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
         img = img_resize(img1)
@@ -103,7 +105,7 @@ def next():
         return
     if len(files) > count:
         img = Image.open(path_dir + '/' + files[count])
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
         img = img_resize(img1)
@@ -113,7 +115,7 @@ def next():
     else:
         count = 0
         img = Image.open(path_dir + '/' + files[count])
-        if img.size[0] / img.size[1] > 1.8:
+        if img.size[0] / img.size[1] > ratio:
             img1 = img.crop((0, 0, img.size[0] / 2, img.size[1]))
             img2 = img.crop((img.size[0] / 2, 0, img.size[0], img.size[1]))
         img = img_resize(img1)
@@ -157,6 +159,7 @@ def turn():
 
 if __name__ == "__main__":
     box = 750
+    ratio = 1.7
     count = 0
     count_t = 0
     count_t0 = 0
